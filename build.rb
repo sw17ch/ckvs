@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'fileutils'
 
 module Build
@@ -8,7 +10,8 @@ module Build
   CC='clang'
   CFLAGS=%w{-Wall -Werror -Wextra -O3 -std=c99}
   INCLUDES=[
-    'mods/core/inc'
+    'mods/core/inc',
+    'inc',
   ].map {|i| "-I" + i}
 
   PROG='ckvs'
@@ -38,13 +41,15 @@ module Build
   end
 end
 
-case ARGV[0]
-when 'build'
-  Build.build
-when 'clean'
-  Build.clean
-when 'run'
-  Build.run
-else
-  Build.build
+ARGV.each do |a|
+  case a
+    when 'build'
+      Build.build
+    when 'clean'
+      Build.clean
+    when 'run'
+      Build.run
+    else
+      Build.build
+  end
 end
