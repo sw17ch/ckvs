@@ -1,9 +1,10 @@
 #ifndef core_h
 #define core_h
 
-#include <core/status.h>
+#include <core/config.h>
 #include <core/handle.h>
 #include <core/key.h>
+#include <core/status.h>
 #include <core/value.h>
 
 enum core_status core_init(
